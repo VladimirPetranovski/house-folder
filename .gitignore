@@ -22,7 +22,7 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-Hi1.java
+Hi1.java/
 
 
 ### NetBeans ###
