@@ -2,7 +2,7 @@ package com.by.petranovski.calculator.example.service;
 
 public class MethodsService {
 
-    public int convertRomanToArabicNumerals (String number) {
+    protected int convertRomanToArabicNumerals (String number) {
         String[] romanNumbers = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
         int result = 0;
         for (int j = 0; j < romanNumbers.length; j++) {
@@ -13,7 +13,7 @@ public class MethodsService {
         return result;
     }
 
-    public String convertArabicToRomanNumeral(int input) {
+    protected String convertArabicToRomanNumeral(int input) {
         if (input < 1 || input > 3999)
             return "Invalid Roman Number Value";
         StringBuilder s = new StringBuilder();
@@ -71,11 +71,11 @@ public class MethodsService {
         return s.toString();
     }
 
-    public String[] divideStringToArray(String s) {
+    protected String[] divideStringToArray(String s) {
         return s.split(" ");
     }
 
-    public String getStringResultForArabicNumerals(String a, String b, String f) {
+    protected String getStringResultForArabicNumerals(String a, String b, String f) {
         switch (f) {
             case "+":
                 return String.valueOf(Integer.parseInt(a) + Integer.parseInt(b));
@@ -89,7 +89,7 @@ public class MethodsService {
         throw new NumberFormatException("The calculator can use only +, -, *, / operators");
     }
 
-    public String getStringResultForRomanNumerals(Integer c, Integer d, String f) {
+    protected String getStringResultForRomanNumerals(Integer c, Integer d, String f) {
         switch (f) {
             case "+":
                 return convertArabicToRomanNumeral(c + d);

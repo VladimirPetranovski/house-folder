@@ -1,4 +1,4 @@
-package com.by.petranovski.calculator;
+package com.by.petranovski.calculator.example;
 /*
 Задача: “Калькулятор”
 Описание:
