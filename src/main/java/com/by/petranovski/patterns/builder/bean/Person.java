@@ -15,7 +15,7 @@ public class Person {
         this.login = personBuilder.login;
     }
 
-    public Person(String name, String age, String login) {
+    public Person(String name, String age, String login) { // для класса PersonBuilder оставили
         this.name = name;
         this.age = age;
         this.login = login;
