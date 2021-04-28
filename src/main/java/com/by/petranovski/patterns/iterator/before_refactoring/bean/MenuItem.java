@@ -2,7 +2,6 @@ package com.by.petranovski.patterns.iterator.before_refactoring.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data

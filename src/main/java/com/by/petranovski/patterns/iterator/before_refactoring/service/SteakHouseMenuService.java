@@ -18,7 +18,7 @@ public class SteakHouseMenuService {
         ));
     }
 
-    public List<MenuItem> getMenuItem() {
+    public List<MenuItem> getMenuItemList() {
         return menuItemList;
     }
 
