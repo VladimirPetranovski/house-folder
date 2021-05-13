@@ -1,13 +1,10 @@
 package com.by.petranovski.patterns.jdkObservable.service;
 
-import com.by.petranovski.patterns.jdkObservable.interfaces.HttpRatesRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
 import java.util.Observable;
-import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Data
