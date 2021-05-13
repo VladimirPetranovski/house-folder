@@ -1,34 +1,28 @@
 package com.by.petranovski.patterns.jdkObservable.view;
 
-import com.by.petranovski.patterns.jdkObservable.interfaces.Observer;
-import com.by.petranovski.patterns.jdkObservable.interfaces.Subject;
-import com.by.petranovski.patterns.jdkObservable.interfaces.HttpRatesRequest;
+import com.by.petranovski.patterns.jdkObservable.service.WebScrapper;
 
-public class SiteWidget implements InfoWidget, Observer {
+import java.util.Observable;
+import java.util.Observer;
+
+public class SiteWidget implements Observer {
 
     private double eur;
 
-    private Subject webScrapper;
-
-    public SiteWidget(Subject webScrapper) {
-        this.webScrapper = webScrapper;
-        webScrapper.registerObserver(this);
+    public SiteWidget(Observable webScrapper) {
+        webScrapper.addObserver(this);
     }
+
     @Override
-    public void update(HttpRatesRequest request) {
-        this.eur = request.getEur();
-        display();
+    public void update(Observable webScrapper, Object args) {
+        if (webScrapper instanceof WebScrapper) {
+            WebScrapper webData = (WebScrapper) webScrapper;
+            this.eur = webData.getEur();
+            display();
+        }
     }
 
     public void display() {
         System.out.println("[SiteWidget.by... says...]eur -> " + eur);
-    }
-
-    public void observerRates() {
-        webScrapper.registerObserver(this);
-    }
-
-    public void stopObserver() {
-        webScrapper.removeObserver(this);
     }
 }

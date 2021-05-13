@@ -7,13 +7,16 @@ import com.by.petranovski.patterns.jdkObservable.view.WatchWidget;
 import com.by.petranovski.patterns.jdkObservable.view.AndroidWidget;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WebScrapper webScrapper = new WebScrapper();
 
-        InfoWidget siteWidget = new SiteWidget(webScrapper);
-        InfoWidget androidWidget = new AndroidWidget(webScrapper);
-        InfoWidget watchWidget = new WatchWidget(webScrapper);
+        new SiteWidget(webScrapper);
+        new AndroidWidget(webScrapper);
+        new WatchWidget(webScrapper);
 
-        webScrapper.getNewRates();
+        for (int i = 0; i < 10; i++) {
+            Thread.sleep(500);
+            webScrapper.getNewRates();
+        }
     }
 }
