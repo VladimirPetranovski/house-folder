@@ -14,9 +14,12 @@
 <!--              <constructor-arg index="1" value="Java"/>-->
 <!--              <constructor-arg index="2" value="3"/>-->
 <!--       </bean>-->
-       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer">
+       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer">  <!-- //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" -->
               <constructor-arg value="Juil"/>
        </bean>
+<!--       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer" scope="prototype">  &lt;!&ndash; //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" &ndash;&gt;-->
+<!--              <constructor-arg value="Juil"/>-->
+<!--       </bean>-->
        <bean id="fitness" name="projectA" class="com.by.petranovski.integrator.bean.BotProject">
               <constructor-arg value="fitnessBot"/>
               <constructor-arg ref="dev"/>

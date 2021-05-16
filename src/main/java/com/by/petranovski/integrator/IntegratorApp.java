@@ -12,8 +12,27 @@ public class IntegratorApp {
     private static final Logger log = LoggerFactory.getLogger(IntegratorApp.class);
 
     public static void main(String[] args) {
-        baseSyntax();
-        composition();
+//        baseSyntax();
+//        composition();
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
+
+        BotProject project = ctx.getBean("projectA", BotProject.class);
+        log.info("project = {}", project);
+
+        project.setName("Scope changing demonstration");
+
+        BotProject fitness = ctx.getBean("projectA", BotProject.class);
+        log.info("fitness = {}", fitness);
+
+        BotProject yoga = ctx.getBean("projectA", BotProject.class);
+        log.info("yoga = {}", yoga);
+
+        log.info("are equal {}", ((project == fitness)
+        && (fitness == yoga) && (project == yoga)));
+    }
+
+    private static void singletonVsPrototype() {
+
     }
 
     private static void composition() {
