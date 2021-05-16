@@ -2,5 +2,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer" />
+       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer">
+              <constructor-arg value="Vavan"/>
+              <constructor-arg value="Java"/>
+              <constructor-arg value="3"/>
+              <constructor-arg value="true"/>
+       </bean>
+<!--       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer"> //можно так если в разнобой-->
+<!--              <constructor-arg index="0" value="Vavan"/>-->
+<!--              <constructor-arg index="3" value="true"/>-->
+<!--              <constructor-arg index="1" value="Java"/>-->
+<!--              <constructor-arg index="2" value="3"/>-->
+<!--       </bean>-->
+       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer">
+              <constructor-arg value="Juil"/>
+       </bean>
+       <bean id="fitness" name="projectA" class="com.by.petranovski.integrator.bean.BotProject">
+              <constructor-arg value="fitnessBot"/>
+              <constructor-arg ref="dev"/>
+       </bean>
+       <bean id="yoga" name="projectB" class="com.by.petranovski.integrator.bean.BotProject">
+              <property name="name" value="yogaBot"></property>
+              <property name="teamLead" ref="trainee"></property>
+       </bean>
 </beans>

@@ -7,6 +7,17 @@ public class Developer {
     private int level;
     private boolean isIntensive;
 
+    public Developer(String name) {
+        this.name = name;
+    }
+
+    public Developer(String name, String skill, int level, boolean isIntensive) {
+        this.name = name;
+        this.skill = skill;
+        this.level = level;
+        this.isIntensive = isIntensive;
+    }
+
     @Override
     public String toString() {
         return "Developer{" +
