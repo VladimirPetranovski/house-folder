@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Arrays;
+
 public class IntegratorApp {
 
     private static final Logger log = LoggerFactory.getLogger(IntegratorApp.class);
@@ -14,6 +16,21 @@ public class IntegratorApp {
     public static void main(String[] args) {
 //        baseSyntax();
 //        composition();
+//        singletonVsPrototype();
+//        printContext();
+    }
+
+    private static void contextCounties() {
+
+    }
+
+    private static void printContext() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
+        Arrays.stream(ctx.getBeanDefinitionNames())
+                .forEach(a -> log.info(a));
+    }
+
+    private static void singletonVsPrototype() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
 
         BotProject project = ctx.getBean("projectA", BotProject.class);
@@ -28,11 +45,7 @@ public class IntegratorApp {
         log.info("yoga = {}", yoga);
 
         log.info("are equal {}", ((project == fitness)
-        && (fitness == yoga) && (project == yoga)));
-    }
-
-    private static void singletonVsPrototype() {
-
+                && (fitness == yoga) && (project == yoga)));
     }
 
     private static void composition() {
