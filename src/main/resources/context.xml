@@ -20,12 +20,26 @@
 <!--       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer" scope="prototype">  &lt;!&ndash; //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" &ndash;&gt;-->
 <!--              <constructor-arg value="Juil"/>-->
 <!--       </bean>-->
-       <bean id="fitness" name="projectA" class="com.by.petranovski.integrator.bean.BotProject">
+
+       <bean id="fitness" name="projectA" class="com.by.petranovski.integrator.bean.BotProject"> <!--закоментил чтобы проверить запускается ли SimpleDate, потому что засэтал nuul в конструктор -->
               <constructor-arg value="fitnessBot"/>
               <constructor-arg ref="dev"/>
+              <constructor-arg>
+                     <bean factory-bean="formatter" factory-method="parse">
+                            <constructor-arg value="2021-07-19"/>
+                     </bean>
+              </constructor-arg>
        </bean>
        <bean id="yoga" name="projectB" class="com.by.petranovski.integrator.bean.BotProject">
               <property name="name" value="yogaBot"></property>
               <property name="teamLead" ref="trainee"></property>
+              <property name="start">
+                     <bean factory-bean="formatter" factory-method="parse">
+                            <constructor-arg value="2021-05-16"/>
+                     </bean>
+              </property>
+       </bean>
+       <bean id="formatter" class="java.text.SimpleDateFormat">
+              <constructor-arg value="yyyy-MM-dd"/>
        </bean>
 </beans>
