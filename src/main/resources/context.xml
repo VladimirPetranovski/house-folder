@@ -3,7 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer">
+
+       <bean id="parentContractor" class="com.by.petranovski.integrator.bean.Contractor">
+              <property name="name" value="X A A-12"/>
+              <property name="level" value="3"/>
+       </bean>
+       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer" parent="parentContractor">
               <constructor-arg value="Vavan"/>
               <constructor-arg value="Java"/>
               <constructor-arg value="3"/>
@@ -22,7 +27,7 @@
               </property>
               <property name="number" value="345M5"/>
        </bean>
-       <bean id="tester" class="com.by.petranovski.integrator.bean.Developer">
+       <bean id="tester" class="com.by.petranovski.integrator.bean.Developer" parent="parentContractor">
               <constructor-arg value="Max"/>
               <constructor-arg value="Phyton"/>
               <constructor-arg value="2"/>
@@ -41,7 +46,7 @@
               </property>
               <property name="number" value="512M1"/>
        </bean>
-       <bean id="manager" class="com.by.petranovski.integrator.bean.Manager">
+       <bean id="manager" class="com.by.petranovski.integrator.bean.Manager" parent="parentContractor">
               <property name="name" value="Vavan Petranovskij"/>
               <property name="age" value="25"/>
               <property name="developers">

@@ -12,12 +12,16 @@ import java.util.Date;
 @Setter
 public class Contractor {
 
+    protected String name;
     private String number;
     private Date date;
 
+    public void setLevel(int i) {
+    }
+
     @Override
     public String toString() {
-        return "\n\tContractor{" +
+        return "\n\tContractor" + name + "{" +
                 "number='" + number + '\'' +
                 ", date=" + date +
                 '}';

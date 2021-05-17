@@ -13,6 +13,10 @@ public class Manager {
     private int age;
     private Set<Developer> developers;
 
+    public void setLevel(int i) {//кастыль
+
+    }
+
     @Override
     public String toString() {
         return "\nManager{" +

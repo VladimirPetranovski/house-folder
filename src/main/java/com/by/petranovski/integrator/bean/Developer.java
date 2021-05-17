@@ -10,7 +10,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class Developer extends Contractor{
 
-    private String name;
+//    private String name;
     private String skill;
     private int level;
     private boolean isIntensive;

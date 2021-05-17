@@ -27,9 +27,8 @@ public class IntegratorApp {
     }
     private static void useCollectionAndInheritance() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
-        Developer dev = ctx.getBean("dev", Developer.class);
+
         Manager manager = ctx.getBean("manager", Manager.class);
-        log.info("Developer = {}", dev);
         log.info("Managet = {}", manager);
     }
 
