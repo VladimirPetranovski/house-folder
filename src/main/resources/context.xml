@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
        <bean id="dev" class="com.by.petranovski.integrator.bean.Developer">
               <constructor-arg value="Vavan"/>
               <constructor-arg value="Java"/>
               <constructor-arg value="3"/>
               <constructor-arg value="true"/>
+              <property name="techStack">
+                     <map>
+                            <entry key="Mockito" value="1"/>
+                            <entry key="Junit" value="5"/>
+                            <entry key="Hybernate" value="7"/>
+                     </map>
+              </property>
+              <property name="date">
+                     <bean factory-bean="formatter" factory-method="parse">
+                            <constructor-arg value="2021-04-01"/>
+                     </bean>
+              </property>
+              <property name="number" value="345M5"/>
+       </bean>
+       <bean id="tester" class="com.by.petranovski.integrator.bean.Developer">
+              <constructor-arg value="Max"/>
+              <constructor-arg value="Phyton"/>
+              <constructor-arg value="2"/>
+              <constructor-arg value="false"/>
+              <property name="techStack">
+                     <map>
+                            <entry key="Spring" value="3"/>
+                            <entry key="JPA" value="1"/>
+                            <entry key="Junit" value="2"/>
+                     </map>
+              </property>
+              <property name="date">
+                     <bean factory-bean="formatter" factory-method="parse">
+                            <constructor-arg value="2021-05-17"/>
+                     </bean>
+              </property>
+              <property name="number" value="512M1"/>
+       </bean>
+       <bean id="manager" class="com.by.petranovski.integrator.bean.Manager">
+              <property name="name" value="Vavan Petranovskij"/>
+              <property name="age" value="25"/>
+              <property name="developers">
+                     <set>
+                            <ref bean="dev"/>
+                            <ref bean="tester"/>
+                     </set>
+              </property>
        </bean>
 <!--       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer"> //можно так если в разнобой-->
 <!--              <constructor-arg index="0" value="Vavan"/>-->

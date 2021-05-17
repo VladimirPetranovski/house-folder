@@ -2,14 +2,13 @@ package com.by.petranovski.integrator;
 
 import com.by.petranovski.integrator.bean.Developer;
 import com.by.petranovski.integrator.bean.BotProject;
-import com.by.petranovski.patterns.jdkObservable.App;
+import com.by.petranovski.integrator.bean.Manager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 public class IntegratorApp {
@@ -22,6 +21,19 @@ public class IntegratorApp {
 //        singletonVsPrototype();
 //        printContext();
 //        contextCounties();
+//        useFabricMethod();
+        useCollectionAndInheritance();
+
+    }
+    private static void useCollectionAndInheritance() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
+        Developer dev = ctx.getBean("dev", Developer.class);
+        Manager manager = ctx.getBean("manager", Manager.class);
+        log.info("Developer = {}", dev);
+        log.info("Managet = {}", manager);
+    }
+
+    private static void useFabricMethod() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
 
         BotProject botProject = ctx.getBean("yoga", BotProject.class);

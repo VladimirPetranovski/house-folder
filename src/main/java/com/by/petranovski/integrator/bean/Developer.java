@@ -1,11 +1,20 @@
 package com.by.petranovski.integrator.bean;
 
-public class Developer {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Map;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Developer extends Contractor{
 
     private String name;
     private String skill;
     private int level;
     private boolean isIntensive;
+    private Map<String, Integer> techStack;
 
     public Developer(String name) {
         this.name = name;
@@ -20,11 +29,13 @@ public class Developer {
 
     @Override
     public String toString() {
-        return "Developer{" +
+        return super.toString() + "\n\t\tDeveloper{" +
                 "name='" + name + '\'' +
                 ", skill='" + skill + '\'' +
                 ", level=" + level +
                 ", isIntensive=" + isIntensive +
+                "," + "\n\t\t\t\t" +
+                "techStack=" + techStack +
                 '}';
     }
 }
