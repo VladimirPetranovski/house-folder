@@ -4,6 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+       <bean id="initBean" class="com.by.petranovski.integrator.config.InitBean"></bean>
+       <bean id="bpp" class="com.by.petranovski.integrator.config.MyBeanPostProcessor"/>
        <bean id="parentContractor" class="com.by.petranovski.integrator.bean.Contractor">
               <property name="name" value="X A A-12"/>
               <property name="level" value="3"/>
