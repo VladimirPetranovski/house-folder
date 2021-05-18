@@ -9,10 +9,10 @@
               <property name="level" value="3"/>
        </bean>
        <bean id="dev" class="com.by.petranovski.integrator.bean.Developer" parent="parentContractor">
-              <constructor-arg value="Vavan"/>
               <constructor-arg value="Java"/>
               <constructor-arg value="3"/>
               <constructor-arg value="true"/>
+<!--              <constructor-arg value="true"/>-->
               <property name="techStack">
                      <map>
                             <entry key="Mockito" value="1"/>
@@ -28,10 +28,10 @@
               <property name="number" value="345M5"/>
        </bean>
        <bean id="tester" class="com.by.petranovski.integrator.bean.Developer" parent="parentContractor">
-              <constructor-arg value="Max"/>
               <constructor-arg value="Phyton"/>
               <constructor-arg value="2"/>
               <constructor-arg value="false"/>
+<!--              <constructor-arg value="false"/>-->
               <property name="techStack">
                      <map>
                             <entry key="Spring" value="3"/>
@@ -55,6 +55,16 @@
                             <ref bean="tester"/>
                      </set>
               </property>
+       </bean>
+       <bean id="israel" class="com.by.petranovski.integrator.bean.Department" init-method="initDepartment">
+              <constructor-arg value="Israel department"/>
+              <constructor-arg>
+                     <list>
+                            <ref bean="tester"/>
+                            <ref bean="dev"/>
+                            <ref bean="manager"/>
+                     </list>
+              </constructor-arg>
        </bean>
 <!--       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer"> //можно так если в разнобой-->
 <!--              <constructor-arg index="0" value="Vavan"/>-->

@@ -5,13 +5,18 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
+import static com.by.petranovski.patterns.iterator.before_refactoring.App.log;
+
 @Data
-@NoArgsConstructor
 public class Manager {
 
     private String name;
     private int age;
     private Set<Developer> developers;
+
+    public Manager() {
+        log.info(">>>>>>> Manager NoArgsConstructor call");
+    }
 
     public void setLevel(int i) {//кастыль
 

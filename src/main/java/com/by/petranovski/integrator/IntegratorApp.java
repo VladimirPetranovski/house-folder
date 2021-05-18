@@ -1,5 +1,6 @@
 package com.by.petranovski.integrator;
 
+import com.by.petranovski.integrator.bean.Department;
 import com.by.petranovski.integrator.bean.Developer;
 import com.by.petranovski.integrator.bean.BotProject;
 import com.by.petranovski.integrator.bean.Manager;
@@ -22,8 +23,14 @@ public class IntegratorApp {
 //        printContext();
 //        contextCounties();
 //        useFabricMethod();
-        useCollectionAndInheritance();
+//        useCollectionAndInheritance();
+        beanLifeCycle();
+    }
 
+    private static void beanLifeCycle() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
+        Department department = ctx.getBean("israel", Department.class);
+        log.info("Department = {}", department);
     }
     private static void useCollectionAndInheritance() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");

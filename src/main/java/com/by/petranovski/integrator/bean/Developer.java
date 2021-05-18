@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.Map;
+
+import static com.by.petranovski.patterns.iterator.before_refactoring.App.log;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Developer extends Contractor{
 
 //    private String name;
@@ -16,12 +18,24 @@ public class Developer extends Contractor{
     private boolean isIntensive;
     private Map<String, Integer> techStack;
 
+    public Developer() {
+        log.info(">>>>>>> Developer NoArgsConstructor call");
+    }
+
     public Developer(String name) {
         this.name = name;
     }
 
-    public Developer(String name, String skill, int level, boolean isIntensive) {
-        this.name = name;
+    public Developer(String skill, int level, boolean isIntensive, Map<String, Integer> techStack) {
+        log.info(">>>>>>> Developer AllArgsConstructor call");
+        this.skill = skill;
+        this.level = level;
+        this.isIntensive = isIntensive;
+        this.techStack = techStack;
+        log.info(">>>>>>> Developer AllArgsConstructor complete");
+    }
+
+    public Developer(String skill, int level, boolean inIntensive) {
         this.skill = skill;
         this.level = level;
         this.isIntensive = isIntensive;
