@@ -12,7 +12,7 @@ public class Humanoid {
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("humanoid.xml");
-        Human human = context.getBean("vova", Human.class);
+        Human human = context.getBean(Human.class);
         log.info("human = {}", human);
     }
 }
