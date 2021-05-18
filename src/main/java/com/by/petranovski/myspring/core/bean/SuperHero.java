@@ -1,4 +1,4 @@
-package com.by.petranovski.myspring.bean;
+package com.by.petranovski.myspring.core.bean;
 
 public class SuperHero implements Humanable{
     @Override

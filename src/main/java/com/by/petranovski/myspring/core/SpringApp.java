@@ -1,6 +1,6 @@
-package com.by.petranovski.myspring;
+package com.by.petranovski.myspring.core;
 
-import com.by.petranovski.myspring.bean.Humanable;
+import com.by.petranovski.myspring.core.bean.Humanable;
 
 public class SpringApp {
     public static void main(String[] args) {

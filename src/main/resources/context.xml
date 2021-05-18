@@ -4,13 +4,13 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-       <bean id="initBean" class="com.by.petranovski.integrator.config.InitBean"></bean>
-       <bean id="bpp" class="com.by.petranovski.integrator.config.MyBeanPostProcessor"/>
-       <bean id="parentContractor" class="com.by.petranovski.integrator.bean.Contractor">
+       <bean id="initBean" class="com.by.petranovski.myspring.xml.integrator.config.InitBean"></bean>
+       <bean id="bpp" class="com.by.petranovski.myspring.xml.integrator.config.MyBeanPostProcessor"/>
+       <bean id="parentContractor" class="com.by.petranovski.myspring.xml.integrator.bean.Contractor">
               <property name="name" value="X A A-12"/>
               <property name="level" value="3"/>
        </bean>
-       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer" parent="parentContractor">
+       <bean id="dev" class="com.by.petranovski.myspring.xml.integrator.bean.Developer" parent="parentContractor">
               <constructor-arg value="Java"/>
               <constructor-arg value="3"/>
               <constructor-arg value="true"/>
@@ -29,7 +29,7 @@
               </property>
               <property name="number" value="345M5"/>
        </bean>
-       <bean id="tester" class="com.by.petranovski.integrator.bean.Developer" parent="parentContractor">
+       <bean id="tester" class="com.by.petranovski.myspring.xml.integrator.bean.Developer" parent="parentContractor">
               <constructor-arg value="Phyton"/>
               <constructor-arg value="2"/>
               <constructor-arg value="false"/>
@@ -48,7 +48,7 @@
               </property>
               <property name="number" value="512M1"/>
        </bean>
-       <bean id="manager" class="com.by.petranovski.integrator.bean.Manager" parent="parentContractor">
+       <bean id="manager" class="com.by.petranovski.myspring.xml.integrator.bean.Manager" parent="parentContractor">
               <property name="name" value="Vavan Petranovskij"/>
               <property name="age" value="25"/>
               <property name="developers">
@@ -58,7 +58,7 @@
                      </set>
               </property>
        </bean>
-       <bean id="israel" class="com.by.petranovski.integrator.bean.Department" init-method="initDepartment">
+       <bean id="israel" class="com.by.petranovski.myspring.xml.integrator.bean.Department" init-method="initDepartment">
               <constructor-arg value="Israel department"/>
               <constructor-arg>
                      <list>
@@ -68,20 +68,20 @@
                      </list>
               </constructor-arg>
        </bean>
-<!--       <bean id="dev" class="com.by.petranovski.integrator.bean.Developer"> //можно так если в разнобой-->
+<!--       <bean id="dev" class="com.by.petranovski.myspring.xml.integrator.bean.Developer"> //можно так если в разнобой-->
 <!--              <constructor-arg index="0" value="Vavan"/>-->
 <!--              <constructor-arg index="3" value="true"/>-->
 <!--              <constructor-arg index="1" value="Java"/>-->
 <!--              <constructor-arg index="2" value="3"/>-->
 <!--       </bean>-->
-       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer">  <!-- //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" -->
+       <bean id="trainee" class="com.by.petranovski.myspring.xml.integrator.bean.Developer">  <!-- //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" -->
               <constructor-arg value="Juil"/>
        </bean>
-<!--       <bean id="trainee" class="com.by.petranovski.integrator.bean.Developer" scope="prototype">  &lt;!&ndash; //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" &ndash;&gt;-->
+<!--       <bean id="trainee" class="com.by.petranovski.myspring.xml.integrator.bean.Developer" scope="prototype">  &lt;!&ndash; //по умолчанию все обьекты singleton, если мы хотим чтобы обьект был не в единственном экземпляере, то надо scope="prototype" &ndash;&gt;-->
 <!--              <constructor-arg value="Juil"/>-->
 <!--       </bean>-->
 
-       <bean id="fitness" name="projectA" class="com.by.petranovski.integrator.bean.BotProject"> <!--закоментил чтобы проверить запускается ли SimpleDate, потому что засэтал nuul в конструктор -->
+       <bean id="fitness" name="projectA" class="com.by.petranovski.myspring.xml.integrator.bean.BotProject"> <!--закоментил чтобы проверить запускается ли SimpleDate, потому что засэтал nuul в конструктор -->
               <constructor-arg value="fitnessBot"/>
               <constructor-arg ref="dev"/>
               <constructor-arg>
@@ -90,7 +90,7 @@
                      </bean>
               </constructor-arg>
        </bean>
-       <bean id="yoga" name="projectB" class="com.by.petranovski.integrator.bean.BotProject">
+       <bean id="yoga" name="projectB" class="com.by.petranovski.myspring.xml.integrator.bean.BotProject">
               <property name="name" value="yogaBot"></property>
               <property name="teamLead" ref="trainee"></property>
               <property name="start">

@@ -1,4 +1,4 @@
-package com.by.petranovski.integrator.bean;
+package com.by.petranovski.myspring.xml.integrator.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,10 +1,7 @@
-package com.by.petranovski.integrator.bean;
+package com.by.petranovski.myspring.xml.integrator.bean;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.Map;
 
 import static com.by.petranovski.patterns.iterator.before_refactoring.App.log;

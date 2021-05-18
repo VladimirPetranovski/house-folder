@@ -1,9 +1,9 @@
-package com.by.petranovski.integrator;
+package com.by.petranovski.myspring.xml.integrator;
 
-import com.by.petranovski.integrator.bean.Department;
-import com.by.petranovski.integrator.bean.Developer;
-import com.by.petranovski.integrator.bean.BotProject;
-import com.by.petranovski.integrator.bean.Manager;
+import com.by.petranovski.myspring.xml.integrator.bean.Department;
+import com.by.petranovski.myspring.xml.integrator.bean.Developer;
+import com.by.petranovski.myspring.xml.integrator.bean.BotProject;
+import com.by.petranovski.myspring.xml.integrator.bean.Manager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

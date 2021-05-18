@@ -1,14 +1,12 @@
-package com.by.petranovski.myspring;
+package com.by.petranovski.myspring.core;
 
-import com.by.petranovski.myspring.bean.Humanable;
-import com.by.petranovski.myspring.bean.Vavan;
+import com.by.petranovski.myspring.core.bean.Humanable;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

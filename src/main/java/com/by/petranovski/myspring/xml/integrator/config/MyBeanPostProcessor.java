@@ -1,4 +1,4 @@
-package com.by.petranovski.integrator.config;
+package com.by.petranovski.myspring.xml.integrator.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
