@@ -16,7 +16,7 @@ public class Human {
     private String name;
     private Integer weight;
     @Autowired
-    @Qualifier("pavelHead")
+    @Qualifier("head")
     private Head head;
 
     public Human(String name, Integer weight) {
