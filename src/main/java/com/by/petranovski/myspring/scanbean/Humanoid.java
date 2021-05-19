@@ -21,8 +21,10 @@ public class Humanoid {
     private static void componentScan() {
         ApplicationContext javaContext = new AnnotationConfigApplicationContext(Humanoid.class);
         Human pavel = javaContext.getBean("pavel", Human.class);
-        Logger logger = javaContext.getBean("logger", Logger.class);
-        logger.info("human = {}", pavel);    }
+        log.info("human = {}", pavel);
+//        Logger logger = javaContext.getBean("logger", Logger.class);
+//        pavel.getLogger().info("human = {}", pavel); // так можно получить логгер
+    }
 
     private static void xmlAnnotatedAutowiring() {
         ApplicationContext context = new ClassPathXmlApplicationContext("humanoid.xml");
