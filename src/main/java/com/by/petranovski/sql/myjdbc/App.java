@@ -38,17 +38,17 @@ public class App {
             System.out.println("\t | \t" + rs.getBoolean(12));
         }
 // удалил таблицу ubuser, поэтому не пойдет
-        UserDao userDao = new UserDao();
-        userDao.getDeveloper().stream()
-                .forEach(s -> System.out.println("\n" + s));
-
-        UserDao userDao1 = new UserDao();
-        userDao1.getMentor().stream()
-                .forEach(s -> System.out.println("\n" + s));
-
-        UserDao userDao2 = new UserDao();
-        userDao2.getAllFromUbUser().stream()
-                .forEach(s -> System.out.println("\n" + s));
+//        UserDao userDao = new UserDao();
+//        userDao.getDeveloper().stream()
+//                .forEach(s -> System.out.println("\n" + s));
+//
+//        UserDao userDao1 = new UserDao();
+//        userDao1.getMentor().stream()
+//                .forEach(s -> System.out.println("\n" + s));
+//
+//        UserDao userDao2 = new UserDao();
+//        userDao2.getAllFromUbUser().stream()
+//                .forEach(s -> System.out.println("\n" + s));
 
         UserDao userDao3 = new UserDao();
         userDao3.jdbcSyntax().stream()

@@ -19,8 +19,7 @@ public class UbUser {
     private LocalDateTime registered;
     private LocalDateTime updated;
     private Character gender;
+    private Integer likes;
     private Double credit;
     private Boolean active;
-    private Integer likes;
-
 }

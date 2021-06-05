@@ -18,11 +18,11 @@ public class Queries {
             "SELECT * FROM ubuser;";
 
     public static final String SELECT_DEVELOPER_FROM_UBUSER = "" +
-            "SELECT * FROM ubuser WHERE bio LIKE '%Dev%';";
+            "SELECT * FROM ubuser WHERE bio LIKE '%dev%';";
 
     public static final String SELECT_MENTOR_FROM_UBUSER = "" +
-            "SELECT * FROM ubuser WHERE bio LIKE '%Men%';";
+            "SELECT * FROM ubuser WHERE bio LIKE '%men%';";
 
     public static final String SELECT_ALL_FROM_USER = "" +
-            "SELECT bio FROM ubuser;";
+            "SELECT * FROM ubuser;";
 }
