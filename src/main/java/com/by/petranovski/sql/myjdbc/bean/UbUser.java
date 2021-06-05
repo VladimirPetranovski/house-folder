@@ -14,7 +14,7 @@ public class UbUser {
     private String login;
     private String name;
     private String bio;
-//    private byte[] image;
+    private byte[] image;
     private LocalDate birth;
     private LocalDateTime registered;
     private LocalDateTime updated;
