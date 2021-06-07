@@ -14,5 +14,4 @@ public class UserDaoTest extends TestCase {
         assertEquals(java.util.Optional.of(23), Optional.of(user.getLikes()));
         assertEquals("misha", user.getName());
     }
-
 }
