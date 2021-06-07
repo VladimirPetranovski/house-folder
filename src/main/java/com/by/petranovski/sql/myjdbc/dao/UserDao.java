@@ -2,16 +2,14 @@ package com.by.petranovski.sql.myjdbc.dao;
 
 import com.by.petranovski.sql.myjdbc.bean.UbUser;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.by.petranovski.sql.myjdbc.config.JisAtLocal.getConnection;
+import static com.by.petranovski.sql.myjdbc.dao.PreparedQueries.PREPARED_SELECT_USER_FIND_BY_ID;
 import static com.by.petranovski.sql.myjdbc.dao.Queries.*;
 
 public class UserDao {
@@ -86,6 +84,22 @@ public class UserDao {
         try (Connection connection = getConnection();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(String.format(SELECT_USER_FND_BY_ID, id))) {
+            while (rs.next()) {
+                System.out.println("rs.getRow() = " + rs.getRow());
+                user = mapResultSetToUser(rs);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
+    public UbUser preparedFindById(int id) {
+        UbUser user = null;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(PREPARED_SELECT_USER_FIND_BY_ID)) {
+            statement.setInt(1, 23);
+            ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 System.out.println("rs.getRow() = " + rs.getRow());
                 user = mapResultSetToUser(rs);
