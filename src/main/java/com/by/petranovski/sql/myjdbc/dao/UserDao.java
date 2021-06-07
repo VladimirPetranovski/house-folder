@@ -23,26 +23,22 @@ public class UserDao {
         ResultSet rs = st.executeQuery(SELECT_ALL_FROM_USER)) {
             while (rs.next()) {
                 System.out.println("rs.getRow() = " + rs.getRow());
-                UbUser user = UbUser.builder()
-                        .id(rs.getInt("id"))
-                        .login(rs.getString("login"))
-                        .name(rs.getString("name"))
-                        .bio(rs.getString("bio"))
-                        .image(rs.getBytes("image"))
-                        .birth(LocalDate.parse(rs.getDate("birth").toString()))
-                        .registered(rs.getObject("registered", LocalDateTime.class))
-                        .updated(rs.getTimestamp("updated").toLocalDateTime())
-                        .gender(rs.getString("gender").charAt(0))
-                        .likes(rs.getInt("likes"))
-                        .credit(rs.getDouble("credit"))
-                        .active(rs.getBoolean("active"))
-                        .build();
+                UbUser user = mapResultSetToUser(rs);
                 users.add(user);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return users;
+    }
+
+    public void updateNameAndLikesById(int id, String name, int likes) {
+        try (Connection connection = getConnection();
+        Statement st = connection.createStatement()) {
+            int rowsUpdated = st.executeUpdate(String.format(UPDATE_NAME_AND_LIKES_BY_ID, name, likes, id));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public List<UbUser> getAllFromUbUser() throws SQLException {
@@ -53,20 +49,7 @@ public class UserDao {
         try {
             while (rs.next()) {
                 System.out.println("rs.getRow() = " + rs.getRow());
-                    UbUser user = UbUser.builder()
-                            .id(rs.getInt(1))
-                            .login(rs.getString(2))
-                            .name(rs.getString(3))
-                            .bio(rs.getString(4))
-                            .image(rs.getBytes(5))
-                            .birth(LocalDate.parse(rs.getDate(6).toString()))
-                            .registered(rs.getObject(7, LocalDateTime.class))
-                            .updated(rs.getTimestamp("updated").toLocalDateTime())
-                            .gender(rs.getString(9).charAt(0))
-                            .likes(rs.getInt(10))
-                            .credit(rs.getDouble(11))
-                            .active(rs.getBoolean(12))
-                            .build();
+                    UbUser user = mapResultSetToUser(rs);
                     users.add(user);
             }
         } catch (Exception ex) {
@@ -98,67 +81,61 @@ public class UserDao {
         return users;
     }
 
-//    public List<UbUser> getDeveloper() throws SQLException {
-//        Connection connection = getConnection();
-//        Statement st2 = connection.createStatement();
-//        ResultSet rs = st2.executeQuery(SELECT_DEVELOPER_FROM_UBUSER);
-//        List<UbUser> users = new ArrayList<>();
-//        while (rs.next()) {
-//            System.out.println("rs.getRow() = " + rs.getRow());
-////            try {
-//            UbUser user = UbUser.builder()
-//                    .id(rs.getInt(1))
-//                    .login(rs.getString(2))
-//                    .name(rs.getString(3))
-//                    .bio(rs.getString(4))
-//                    .image(rs.getBytes(5))
-//                    .birth(LocalDate.parse(rs.getDate(6).toString()))
-//                    .registered(rs.getObject(7, LocalDateTime.class))
-//                    .updated(rs.getObject(8, LocalDateTime.class))
-//                    .gender(rs.getString(9).charAt(0))
-//                    .likes(rs.getInt(10))
-//                    .credit(rs.getDouble(11))
-//                    .active(rs.getBoolean(12))
-//                    .build();
-//            users.add(user);
-//
-////            } catch (Exception ex) {
-////                ex.printStackTrace();
-////                System.out.println("error in row " + rs.getInt(1));
-////            }
-////            users.add(user);
-//        }
-//        return users;
-//    }
-//
-//    public List<UbUser> getMentor() throws SQLException {
-//        Connection connection = getConnection();
-//        Statement st2 = connection.createStatement();
-//        ResultSet rs = st2.executeQuery(SELECT_MENTOR_FROM_UBUSER);
-//        List<UbUser> users = new ArrayList<>();
-//        while (rs.next()) {
-//            System.out.println("rs.getRow() = " + rs.getRow());
-////            try {
-//                UbUser user = UbUser.builder()
-//                        .id(rs.getInt(1))
-//                        .login(rs.getString(2))
-//                        .name(rs.getString(3))
-//                        .bio(rs.getString(4))
-//                    .image(rs.getBytes(5))
-//                        .birth(LocalDate.parse(rs.getDate(6).toString()))
-//                        .registered(rs.getObject(7, LocalDateTime.class))
-//                        .updated(rs.getTimestamp("updated").toLocalDateTime())
-//                        .gender(rs.getString(9).charAt(0))
-//                        .likes(rs.getInt(10))
-//                        .credit(rs.getDouble(11))
-//                        .active(rs.getBoolean(12))
-//                        .build();
-//                users.add(user);
-////            } catch (Exception ex) {
-////                ex.printStackTrace();
-////                System.out.println("error in row " + rs.getInt(1));
-////            }
-//        }
-//        return users;
-//    }
+    public UbUser findById(int id) {
+        UbUser user = null;
+        try (Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(String.format(SELECT_USER_FND_BY_ID, id))) {
+            while (rs.next()) {
+                System.out.println("rs.getRow() = " + rs.getRow());
+                user = mapResultSetToUser(rs);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
+    public List<UbUser> getDeveloper() throws SQLException {
+        Connection connection = getConnection();
+        Statement st2 = connection.createStatement();
+        ResultSet rs = st2.executeQuery(SELECT_DEVELOPER_FROM_UBUSER);
+        List<UbUser> users = new ArrayList<>();
+        while (rs.next()) {
+            System.out.println("rs.getRow() = " + rs.getRow());
+            UbUser user = mapResultSetToUser(rs);
+            users.add(user);
+        }
+        return users;
+    }
+
+    public List<UbUser> getMentor() throws SQLException {
+        Connection connection = getConnection();
+        Statement st2 = connection.createStatement();
+        ResultSet rs = st2.executeQuery(SELECT_MENTOR_FROM_UBUSER);
+        List<UbUser> users = new ArrayList<>();
+        while (rs.next()) {
+            System.out.println("rs.getRow() = " + rs.getRow());
+                UbUser user = mapResultSetToUser(rs);
+                users.add(user);
+        }
+        return users;
+    }
+
+    private UbUser mapResultSetToUser(ResultSet rs) throws SQLException {
+        return UbUser.builder()
+                .id(rs.getInt("id"))
+                .login(rs.getString("login"))
+                .name(rs.getString("name"))
+                .bio(rs.getString("bio"))
+                .image(rs.getBytes("image"))
+                .birth(LocalDate.parse(rs.getDate("birth").toString()))
+                .registered(rs.getObject("registered", LocalDateTime.class))
+                .updated(rs.getTimestamp("updated").toLocalDateTime())
+                .gender(rs.getString("gender").charAt(0))
+                .likes(rs.getInt("likes"))
+                .credit(rs.getDouble("credit"))
+                .active(rs.getBoolean("active"))
+                .build();
+    }
 }

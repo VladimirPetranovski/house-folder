@@ -13,13 +13,14 @@ import static com.by.petranovski.sql.myjdbc.dao.Queries.*;
 public class App {
 
     public static void main(String[] args) throws SQLException {
+        // нет таблицы j_girls
         Connection connection = getConnection();
-        Statement st = connection.createStatement();
-        st.execute(DROP_TABLE_GIRLS);
-
-        Statement statement = connection.createStatement();
-        statement.execute(CREATE_TABLE_GIRLS);
-
+//        Statement st = connection.createStatement();
+//        st.execute(DROP_TABLE_GIRLS);
+//
+//        Statement statement = connection.createStatement();
+//        statement.execute(CREATE_TABLE_GIRLS);
+//
         Statement st1 = connection.createStatement();
         ResultSet rs = st1.executeQuery(SELECT_FROM_UBUSER);
         while (rs.next()) {
@@ -37,18 +38,18 @@ public class App {
             System.out.println("\t | \t" + rs.getBigDecimal(11));
             System.out.println("\t | \t" + rs.getBoolean(12));
         }
-// удалил таблицу ubuser, поэтому не пойдет
-//        UserDao userDao = new UserDao();
-//        userDao.getDeveloper().stream()
-//                .forEach(s -> System.out.println("\n" + s));
-//
-//        UserDao userDao1 = new UserDao();
-//        userDao1.getMentor().stream()
-//                .forEach(s -> System.out.println("\n" + s));
-//
-//        UserDao userDao2 = new UserDao();
-//        userDao2.getAllFromUbUser().stream()
-//                .forEach(s -> System.out.println("\n" + s));
+
+        UserDao userDao = new UserDao();
+        userDao.getDeveloper().stream()
+                .forEach(s -> System.out.println("\n" + s));
+
+        UserDao userDao1 = new UserDao();
+        userDao1.getMentor().stream()
+                .forEach(s -> System.out.println("\n" + s));
+
+        UserDao userDao2 = new UserDao();
+        userDao2.getAllFromUbUser().stream()
+                .forEach(s -> System.out.println("\n" + s));
 
         UserDao userDao3 = new UserDao();
         userDao3.jdbcSyntax().stream()
