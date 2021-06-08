@@ -16,11 +16,15 @@ public class UserDao implements Dao<UbUser, Integer>{
     @Override
     public void save(UbUser ubUser) {
         String id = null;
+        String sql = null;
         if (ubUser.getId() != null) {
             id = ubUser.getId().toString();
+            sql = String.format(UPDATE_NAME_AND_LIKES_BY_ID,
+                    ubUser.getName(), ubUser.getLikes(), id);
+        }else {
+            sql = INSERT_NEW_USER_LAZY; //todo correct
         }
-        String sql = String.format(UPDATE_NAME_AND_LIKES_BY_ID,
-                ubUser.getName(), ubUser.getLikes(), id);
+
         try (Connection connection = getConnection();
              Statement st = connection.createStatement()) {
             int rowsUpdated = st.executeUpdate(sql);

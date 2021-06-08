@@ -188,6 +188,40 @@ public class UserDaoSyntaxExample {
         }
     }
 
+    void saveAllBatch(List<UbUser> users) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_NEW_USER_LAZY)) {
+            for (UbUser user : users) {
+                statement.setString(1, user.getLogin());
+                statement.setString(2, user.getName());
+                statement.setInt(3, user.getLikes());
+                statement.addBatch();
+            }
+            statement.executeBatch();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    void saveAll(List<UbUser> users) {
+        try (Connection connection = getConnection()) {
+            for (UbUser user : users) {
+                try (PreparedStatement statement = connection.prepareStatement(INSERT_NEW_USER_LAZY)) {
+
+                    statement.setString(1, user.getLogin());
+                    statement.setString(2, user.getName());
+                    statement.setInt(3, user.getLikes());
+                    statement.executeUpdate();
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private UbUser mapResultSetToUser(ResultSet rs) throws SQLException {
         return UbUser.builder()
                 .id(rs.getInt("id"))

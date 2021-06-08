@@ -27,6 +27,11 @@ public class Queries {
             "SELECT * FROM `ubuser`;";
     public static final String UPDATE_NAME_AND_LIKES_BY_ID = "" +
             "UPDATE `ubuser` SET `name` = '%s', `likes` = '%s' WHERE `id` = '%s';";
+
+    public static final String INSERT_NEW_USER_LAZY = "" +
+            "INSERT INTO `ubuser` (`login`, `name`, `likes`) VALUES (?, ?, ?);";
+
+
     public static final String SELECT_USER_FND_BY_ID = "" +
             "SELECT * FROM `ubuser` WHERE `id` = '%s';";
     public static final String PREPARED_SELECT_USER_FIND_BY_ID = "" +
