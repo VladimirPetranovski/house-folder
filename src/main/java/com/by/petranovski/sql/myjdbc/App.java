@@ -1,6 +1,6 @@
 package com.by.petranovski.sql.myjdbc;
 
-import com.by.petranovski.sql.myjdbc.dao.UserDao;
+import com.by.petranovski.sql.myjdbc.dao.UserDaoSyntaxExample;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -39,19 +39,19 @@ public class App {
             System.out.println("\t | \t" + rs.getBoolean(12));
         }
 
-        UserDao userDao = new UserDao();
+        UserDaoSyntaxExample userDao = new UserDaoSyntaxExample();
         userDao.getDeveloper().stream()
                 .forEach(s -> System.out.println("\n" + s));
 
-        UserDao userDao1 = new UserDao();
+        UserDaoSyntaxExample userDao1 = new UserDaoSyntaxExample();
         userDao1.getMentor().stream()
                 .forEach(s -> System.out.println("\n" + s));
 
-        UserDao userDao2 = new UserDao();
+        UserDaoSyntaxExample userDao2 = new UserDaoSyntaxExample();
         userDao2.getAllFromUbUser().stream()
                 .forEach(s -> System.out.println("\n" + s));
 
-        UserDao userDao3 = new UserDao();
+        UserDaoSyntaxExample userDao3 = new UserDaoSyntaxExample();
         userDao3.jdbcSyntax().stream()
                 .forEach(s -> System.out.println("\n" + s));
     }

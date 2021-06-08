@@ -8,10 +8,10 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-public class UserDaoTest extends TestCase {
+public class UserDaoSyntaxExampleTest extends TestCase {
 
     public void testUpdateNameAndLikesById() {
-        UserDao userDao = new UserDao();
+        UserDaoSyntaxExample userDao = new UserDaoSyntaxExample();
         userDao.updateNameAndLikesById(2, "misha", 23);
         UbUser user = userDao.findById(2);
         assertEquals(java.util.Optional.of(23), Optional.of(user.getLikes()));
@@ -19,7 +19,7 @@ public class UserDaoTest extends TestCase {
     }
 
     public void testPreparedFindById() {
-        UserDao userDao = new UserDao();
+        UserDaoSyntaxExample userDao = new UserDaoSyntaxExample();
 
         LocalDateTime timeStamp1 = LocalDateTime.now();
         for (int i = 0; i < 1000; i++) {
@@ -38,13 +38,18 @@ public class UserDaoTest extends TestCase {
     }
 
     public void testFindByIdLazy() { //тут может выскачить ошибка, потому что сразу в запросе не прописал login
-        UserDao userDao = new UserDao();
+        UserDaoSyntaxExample userDao = new UserDaoSyntaxExample();
         LightWeightUbUser user = userDao.findByIdLazy(1);
         System.out.println("user = " + user);
     }
 
-    public void testMovingCursor() {
-        UserDao userDao = new UserDao();
+    public void testMovingCursor() { //тут тоже выскачит исключение потому что версия драйвера mysql больше 5-ой
+        UserDaoSyntaxExample userDao = new UserDaoSyntaxExample();
         userDao.movingCursor();
+    }
+
+    public void testSelectAndUpdate() {
+        UserDaoSyntaxExample userDao = new UserDaoSyntaxExample();
+        userDao.selectAndUpdate();
     }
 }
