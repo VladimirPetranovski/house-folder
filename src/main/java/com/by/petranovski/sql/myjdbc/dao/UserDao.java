@@ -191,7 +191,7 @@ public class UserDao {
     private LightWeightUbUser mapResultSetToLightWeightUbUser(ResultSet rs) throws SQLException {
         return LightWeightUbUser.builder()
                 .id(rs.getInt("id"))
-                .login(rs.getString(2))
+                .login(rs.getString("login"))
                 .name(rs.getString("name"))
                 .likes(rs.getInt("likes"))
                 .build();

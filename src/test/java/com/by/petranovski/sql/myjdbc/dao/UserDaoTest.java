@@ -37,7 +37,7 @@ public class UserDaoTest extends TestCase {
         System.out.println("Common/Prepare " + (Duration.between(timeStamp2, timeStamp3).toNanos())/(Duration.between(timeStamp2, timeStamp3).toNanos()));
     }
 
-    public void testFindByIdLazy() {
+    public void testFindByIdLazy() { //тут может выскачить ошибка, потому что сразу в запросе не прописал login
         UserDao userDao = new UserDao();
         LightWeightUbUser user = userDao.findByIdLazy(1);
         System.out.println("user = " + user);
