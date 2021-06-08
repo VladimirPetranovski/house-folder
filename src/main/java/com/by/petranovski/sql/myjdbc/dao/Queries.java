@@ -31,4 +31,6 @@ public class Queries {
             "SELECT * FROM `ubuser` WHERE `id` = '%s';";
     public static final String PREPARED_SELECT_USER_FIND_BY_ID = "" +
             "SELECT * FROM `ubuser` WHERE `id` = ?;";
+    public static final String CALL_USER_BY_ID = "" +
+            "CALL getLightWeightUbUser();";
 }

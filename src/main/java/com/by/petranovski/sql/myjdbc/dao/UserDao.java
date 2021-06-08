@@ -1,5 +1,6 @@
 package com.by.petranovski.sql.myjdbc.dao;
 
+import com.by.petranovski.sql.myjdbc.bean.LightWeightUbUser;
 import com.by.petranovski.sql.myjdbc.bean.UbUser;
 
 import java.sql.*;
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.by.petranovski.sql.myjdbc.config.JisAtLocal.getConnection;
-import static com.by.petranovski.sql.myjdbc.dao.PreparedQueries.PREPARED_SELECT_USER_FIND_BY_ID;
 import static com.by.petranovski.sql.myjdbc.dao.Queries.*;
 
 public class UserDao {
@@ -110,6 +110,21 @@ public class UserDao {
         return user;
     }
 
+    public LightWeightUbUser findByIdLazy(int id) {
+        LightWeightUbUser user = null;
+        try (Connection connection = getConnection();
+             CallableStatement statement = connection.prepareCall(CALL_USER_BY_ID)) {
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                System.out.println("rs.getRow() = " + rs.getRow());
+                user = mapResultSetToLightWeightUbUser(rs);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
     public List<UbUser> getDeveloper() throws SQLException {
         Connection connection = getConnection();
         Statement st2 = connection.createStatement();
@@ -136,6 +151,26 @@ public class UserDao {
         return users;
     }
 
+    public void movingCursor() {
+        try (Connection connection = getConnection();
+             Statement st = connection.createStatement();
+             ResultSet rs = st.executeQuery(SELECT_ALL_FROM_USER)) {
+            List<UbUser> users = new ArrayList<>();
+            while (rs.next()) {
+                UbUser user = mapResultSetToUser(rs);
+                users.add(user);
+            }
+//            rs.afterLast(); // можно установить курсор в конец и пройтись от конца к началу, но для этого нужно установить 5-ую версию драйвера mysql
+//            while (rs.previous()) {
+//                UbUser user = mapResultSetToUser(rs);
+//                users.add(user);
+//            }
+            System.out.println("elements = " + users.size());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private UbUser mapResultSetToUser(ResultSet rs) throws SQLException {
         return UbUser.builder()
                 .id(rs.getInt("id"))
@@ -150,6 +185,15 @@ public class UserDao {
                 .likes(rs.getInt("likes"))
                 .credit(rs.getDouble("credit"))
                 .active(rs.getBoolean("active"))
+                .build();
+    }
+
+    private LightWeightUbUser mapResultSetToLightWeightUbUser(ResultSet rs) throws SQLException {
+        return LightWeightUbUser.builder()
+                .id(rs.getInt("id"))
+                .login(rs.getString(2))
+                .name(rs.getString("name"))
+                .likes(rs.getInt("likes"))
                 .build();
     }
 }

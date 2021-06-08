@@ -1,5 +1,6 @@
 package com.by.petranovski.sql.myjdbc.dao;
 
+import com.by.petranovski.sql.myjdbc.bean.LightWeightUbUser;
 import com.by.petranovski.sql.myjdbc.bean.UbUser;
 import junit.framework.TestCase;
 
@@ -34,5 +35,16 @@ public class UserDaoTest extends TestCase {
         System.out.println("Common " + Duration.between(timeStamp1, timeStamp2).toSeconds());
         System.out.println("Prepare " + Duration.between(timeStamp2, timeStamp3).toSeconds());
         System.out.println("Common/Prepare " + (Duration.between(timeStamp2, timeStamp3).toNanos())/(Duration.between(timeStamp2, timeStamp3).toNanos()));
+    }
+
+    public void testFindByIdLazy() {
+        UserDao userDao = new UserDao();
+        LightWeightUbUser user = userDao.findByIdLazy(1);
+        System.out.println("user = " + user);
+    }
+
+    public void testMovingCursor() {
+        UserDao userDao = new UserDao();
+        userDao.movingCursor();
     }
 }
