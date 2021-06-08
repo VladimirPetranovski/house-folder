@@ -33,4 +33,7 @@ public class Queries {
             "SELECT * FROM `ubuser` WHERE `id` = ?;";
     public static final String CALL_USER_BY_ID = "" +
             "CALL getLightWeightUbUser();";
+    public static final String PREPARED_DELETE_USER_BY_ID = "" +
+            "DELETE * FROM `ubuser` WHERE `id` = ?;";
+
 }
