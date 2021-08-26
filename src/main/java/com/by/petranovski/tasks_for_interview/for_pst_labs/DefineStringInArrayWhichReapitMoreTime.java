@@ -1,4 +1,4 @@
-package com.by.petranovski.tasks_for_interview.for_PST_Labs;
+package com.by.petranovski.tasks_for_interview.for_pst_labs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
