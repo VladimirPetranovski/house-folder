@@ -38,11 +38,13 @@ class DefineStringInArrayWhichRepeatMoreTime {
         }
         return maxIndex;
     }
+
     private static String findStringWhichRepeatMostOfAll(String[] array) {
         int[] arrayInt = defineArrayRepeatingString(array);
         int maxIndex = findIndexMaxByValue(arrayInt);
         return array[maxIndex];
     }
+
     private static int findAmountWordsInString(String str) {
         String[] arrayString = str.trim().split(" ");
         return arrayString.length;
