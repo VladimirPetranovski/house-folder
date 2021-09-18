@@ -2,7 +2,7 @@ package com.by.petranovski.collections.map.how_change_parametrs_place;
 /*
 Напишите метод, который получает на вход Map<K, V> и возвращает Map,
 где ключи и значения поменяны местами. Так как значения могут совпадать,
-то тип значения в Map будет уже не K, аCollection<K>:
+то тип значения в Map будет уже не K, а Collection<K>:
  */
 
 import java.util.*;
@@ -23,7 +23,6 @@ public class ChangeParametrsPlace {
                 return ks;
             });
         }
-
         return resultMap;
     }
 
