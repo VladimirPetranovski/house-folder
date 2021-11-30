@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.11" class="java.beans.XMLDecoder">
+ <object class="com.by.petranovski.serialization.RandomObject" id="RandomObject0">
+  <void property="data">
+   <void index="0">
+    <double>0.3878471283854611</double>
+   </void>
+   <void index="1">
+    <double>0.25931067492539583</double>
+   </void>
+   <void index="2">
+    <double>0.6525085075443079</double>
+   </void>
+   <void index="3">
+    <double>0.9429151031777591</double>
+   </void>
+   <void index="4">
+    <double>0.17646833330080558</double>
+   </void>
+   <void index="5">
+    <double>0.1632817738358313</double>
+   </void>
+   <void index="6">
+    <double>0.6734328179452956</double>
+   </void>
+   <void index="7">
+    <double>0.3264546895412791</double>
+   </void>
+   <void index="8">
+    <double>0.42212895771417125</double>
+   </void>
+   <void index="9">
+    <double>0.20918848922625566</double>
+   </void>
+  </void>
+ </object>
+ <object class="com.by.petranovski.serialization.RandomObject" id="RandomObject1">
+  <void property="data">
+   <void index="0">
+    <double>0.554694676357133</double>
+   </void>
+   <void index="1">
+    <double>0.8681370836037813</double>
+   </void>
+   <void index="2">
+    <double>0.7534193736835242</double>
+   </void>
+   <void index="3">
+    <double>0.8968284657827265</double>
+   </void>
+   <void index="4">
+    <double>0.641147904348125</double>
+   </void>
+   <void index="5">
+    <double>0.8892799782764456</double>
+   </void>
+   <void index="6">
+    <double>0.21267625105221155</double>
+   </void>
+   <void index="7">
+    <double>0.24050549728093384</double>
+   </void>
+   <void index="8">
+    <double>0.9265050233519915</double>
+   </void>
+   <void index="9">
+    <double>0.3941192616697652</double>
+   </void>
+  </void>
+ </object>
+</java>
