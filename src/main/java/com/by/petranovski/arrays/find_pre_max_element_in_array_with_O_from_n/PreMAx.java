@@ -15,7 +15,7 @@ public class PreMAx {
                 max = arr[i];
             } else if (preMax < arr[i] && max != arr[i]) {
                 preMax = arr[i];
-            } else return -1; // если массив состоит из одинаковых чисел
+            } else preMax = -1;
         }
         return preMax;
     }
