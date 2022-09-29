@@ -9,6 +9,9 @@ public class BinarySearch {
         Arrays.sort(array);
         int elementToSearch = 95;
         System.out.println(binarySearch(array, elementToSearch));
+
+        InThread thread = new InThread();
+        thread.run();
     }
 
     private static int binarySearch(int[] array, int elementToSearch) {
